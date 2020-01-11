@@ -8,6 +8,7 @@ namespace HatcheryManagement
         {
             while(true)
             {
+
                 Market market = new Market();
                 Hatchery hatchery = new Hatchery();
 
@@ -15,9 +16,9 @@ namespace HatcheryManagement
                 Console.WriteLine("|             Admin User Mode                |");
                 Console.WriteLine("|                                            |");
                 Console.WriteLine("|    want to Add some fish?                  |");
-                Console.WriteLine("|    For Rui Fish({0})({1})       [Select-1] |", MarketInventory.rui,Hatchery.rui);
-                Console.WriteLine("|    For Katla Fish({0})({1})     [Select-2] |", MarketInventory.katla,Hatchery.katla);
-                Console.WriteLine("|    For Ilish Fish({0})({1})     [Select-3] |", MarketInventory.ilish,Hatchery.ilish);
+                Console.WriteLine("|    For Rui Fish({0})({1})       [Select-1] |", MarketInventory.rui,FishTank.rui);
+                Console.WriteLine("|    For Katla Fish({0})({1})     [Select-2] |", MarketInventory.katla,FishTank.katla);
+                Console.WriteLine("|    For Ilish Fish({0})({1})     [Select-3] |", MarketInventory.ilish,FishTank.ilish);
                 Console.WriteLine("|                Quit             [Select-0] |");
                 Console.WriteLine(" --------------------------------------------");
 
