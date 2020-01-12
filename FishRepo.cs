@@ -4,21 +4,33 @@ namespace HatcheryManagement
 {
     class FishRepo
     {
+        private static int count = 0;
         private FishRepo()
         {
-
+            count++;
+            Console.WriteLine("Counter Value " + count);
         }
         private static FishRepo instance;
         private int rui = 1000;
         private int katla = 1000;
         private int ilish = 1000;
+
+        private static readonly object lockCheck = new object();
+
         public static FishRepo GetInstance()
         {
-            if (instance == null)
+            lock (lockCheck)
             {
-                instance = new FishRepo();
+                if (instance == null)
+                {
+                    instance = new FishRepo();
+                }
+                return instance;
             }
-            return instance;
+        }
+        public void threadDetails(string message)
+        {
+            System.Console.WriteLine("Current Thread: "+message);
         }
         public int getRui()
         {

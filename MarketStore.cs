@@ -5,21 +5,27 @@ namespace HatcheryManagement
     class MarketStore
     {
         private static MarketStore instance;
+        private static readonly object lockCheck = new object();
 
         private int rui = 100;
         private int katla = 100;
         private int ilish = 100;
+        private static int count = 0;        
         private MarketStore()
         {
-
+            count++;
+            Console.WriteLine("Counter Value " + count);
         }
         public static MarketStore GetInstance()
         {
-            if(instance == null)
+            lock (lockCheck)
             {
-                instance = new MarketStore();
+                if (instance == null)
+                {
+                    instance = new MarketStore();
+                }
+                return instance;
             }
-            return instance;
         }
         public int getRui()
         {

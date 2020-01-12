@@ -1,25 +1,23 @@
 ﻿using System;
 using System.Timers;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace HatcheryManagement
 {
     class Program
     {
-        // private static Timer timer;
         static void Main(string[] args)
         {
+            // Parallel.Invoke(
+            //     () => PrintRuiThread(),
+            //     () => PrintKatlaThread()
+            // );
 
             Thread thread = new Thread(new ThreadStart(CheckFish));
             thread.IsBackground = true;
             thread.Name = "Fish Generating Thread";
             thread.Start();
-
-            // timer = new Timer();
-            // timer.Interval = 5000;
-            // timer.Elapsed += CheckFish;
-            // timer.AutoReset = true;
-            // timer.Enabled = true;
 
             while (true)
             {
@@ -50,11 +48,6 @@ namespace HatcheryManagement
                 }
             }
         }
-        // public static void CheckFish(Object source, ElapsedEventArgs e)
-        // {
-        //     // System.Console.WriteLine("CheckFish Working!!!");
-        //     FishTank.GenerateFish();
-        // }
         public static void CheckFish()
         {
             while (true)
@@ -64,5 +57,15 @@ namespace HatcheryManagement
                 FishTank.GenerateFish();
             }
         }
+        // public static void PrintRuiThread()
+        // {
+        //     FishRepo fr = FishRepo.GetInstance();
+        //     fr.threadDetails("Rui Thread Invoked");
+        // }
+        // public static void PrintKatlaThread()
+        // {
+        //     FishRepo fr = FishRepo.GetInstance();
+        //     fr.threadDetails("Katla Thread Invoked");
+        // }
     }
 }
