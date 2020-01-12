@@ -4,13 +4,14 @@ namespace HatcheryManagement
 {
     class Hatchery
     {
+        FishRepo fishRepo = FishRepo.GetInstance();
         public void OnRuiBuy(Object source, SaleAmmountArgs e)
         {
-            if ((FishTank.rui - e.ammount) >= 0)
+            if ((fishRepo.rui - e.ammount) >= 0)
             {
-                FishTank.rui = FishTank.rui - e.ammount;
+                fishRepo.rui = fishRepo.rui - e.ammount;
                 MarketInventory.rui = MarketInventory.rui + e.ammount;
-                Console.WriteLine("Rui in Hatchery: " + FishTank.rui);
+                Console.WriteLine("Rui in Hatchery: " + fishRepo.rui);
             }
             else
             {
@@ -21,11 +22,11 @@ namespace HatcheryManagement
 
         public void OnKatlaBuy(Object source, SaleAmmountArgs e)
         {
-            if ((FishTank.katla - e.ammount) >= 0)
+            if ((fishRepo.katla - e.ammount) >= 0)
             {
-                FishTank.katla = FishTank.katla - e.ammount;
+                fishRepo.katla = fishRepo.katla - e.ammount;
                 MarketInventory.katla = MarketInventory.katla + e.ammount;
-                Console.WriteLine("Katla in Hatchery: " + FishTank.katla);
+                Console.WriteLine("Katla in Hatchery: " + fishRepo.katla);
             }
             else
             {
@@ -36,11 +37,11 @@ namespace HatcheryManagement
 
         public void OnIlishBuy(Object source, SaleAmmountArgs e)
         {
-            if ((FishTank.ilish - e.ammount) >= 0)
+            if ((fishRepo.ilish - e.ammount) >= 0)
             {
-                FishTank.ilish = FishTank.ilish - e.ammount;
+                fishRepo.ilish = fishRepo.ilish - e.ammount;
                 MarketInventory.ilish = MarketInventory.ilish + e.ammount;
-                Console.WriteLine("Katla in Hatchery: " + FishTank.ilish);
+                Console.WriteLine("Katla in Hatchery: " + fishRepo.ilish);
             }
             else
             {

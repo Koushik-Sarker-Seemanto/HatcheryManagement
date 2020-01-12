@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Timers;
+using System.Threading;
 
 namespace HatcheryManagement
 {
     class Program
     {
-        private static Timer timer;
+        // private static Timer timer;
         static void Main(string[] args)
         {
-            timer = new Timer();
-            timer.Interval = 5000;
-            timer.Elapsed += CheckFish;
-            timer.AutoReset = true;
-            timer.Enabled = true;
+
+            Thread thread = new Thread(new ThreadStart(CheckFish));
+            thread.IsBackground = true;
+            thread.Name = "Fish Generating Thread";
+            thread.Start();
+
+            // timer = new Timer();
+            // timer.Interval = 5000;
+            // timer.Elapsed += CheckFish;
+            // timer.AutoReset = true;
+            // timer.Enabled = true;
 
             while (true)
             {
@@ -43,10 +50,19 @@ namespace HatcheryManagement
                 }
             }
         }
-        public static void CheckFish(Object source, ElapsedEventArgs e)
+        // public static void CheckFish(Object source, ElapsedEventArgs e)
+        // {
+        //     // System.Console.WriteLine("CheckFish Working!!!");
+        //     FishTank.GenerateFish();
+        // }
+        public static void CheckFish()
         {
-            // System.Console.WriteLine("CheckFish Working!!!");
-            FishTank.GenerateFish();
+            while (true)
+            {
+                Thread.Sleep(2000);
+                System.Console.WriteLine("CheckFish");
+                FishTank.GenerateFish();
+            }
         }
     }
 }

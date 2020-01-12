@@ -4,15 +4,23 @@ namespace HatcheryManagement
 {
     class FishTank
     {
-        public static int rui = 1000, katla = 1000, ilish = 1000;
         public static void GenerateFish()
         {
-            if (rui < 1000 || katla < 1000 || ilish < 1000)
+            FishRepo fishRepo = FishRepo.GetInstance();
+            if (fishRepo.rui < 1000)
             {
-                // Console.WriteLine("Fish Generating.");
-                rui = 1000;
-                katla = 1000;
-                ilish = 1000;
+                Console.WriteLine("Rui Generating: {0} pcs",(1000-fishRepo.rui));
+                fishRepo.rui = 1000;
+            }
+            else if(fishRepo.katla < 1000)
+            {
+                Console.WriteLine("katla Generating: {0} pcs",(1000-fishRepo.katla));
+                fishRepo.katla = 1000;
+            }
+            else if(fishRepo.ilish < 1000)
+            {
+                Console.WriteLine("Ilish Generating: {0} pcs",(1000-fishRepo.ilish));
+                fishRepo.ilish = 1000;
             }
         }
     }
