@@ -2,21 +2,22 @@ using System;
 
 namespace HatcheryManagement
 {
-    class FishRepo
+    class MarketStore
     {
-        private FishRepo()
+        private static MarketStore instance;
+
+        private int rui = 100;
+        private int katla = 100;
+        private int ilish = 100;
+        private MarketStore()
         {
 
         }
-        private static FishRepo instance;
-        private int rui = 1000;
-        private int katla = 1000;
-        private int ilish = 1000;
-        public static FishRepo GetInstance()
+        public static MarketStore GetInstance()
         {
-            if (instance == null)
+            if(instance == null)
             {
-                instance = new FishRepo();
+                instance = new MarketStore();
             }
             return instance;
         }
@@ -46,5 +47,6 @@ namespace HatcheryManagement
         {
             ilish = value;
         }
+
     }
 }

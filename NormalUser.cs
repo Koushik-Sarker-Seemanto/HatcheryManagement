@@ -11,14 +11,16 @@ namespace HatcheryManagement
                 Market market = new Market();
                 MarketInventory marketInventory = new MarketInventory();
 
+                MarketStore marketStore = MarketStore.GetInstance();
+
                 Console.WriteLine(" ----------------------------------------");
                 Console.WriteLine("|            Normal User Mode            |");
                 Console.WriteLine("|                                        |");
                 Console.WriteLine("|    Welcome to Fish Market!!!!!!!!!!!!  |");
                 Console.WriteLine("|    want to buy some fish?              |");
-                Console.WriteLine("|    For Rui Fish({0})        [Select-1] |", MarketInventory.rui);
-                Console.WriteLine("|    For Katla Fish({0})      [Select-2] |", MarketInventory.katla);
-                Console.WriteLine("|    For Ilish Fish({0})      [Select-3] |", MarketInventory.ilish);
+                Console.WriteLine("|    For Rui Fish({0})        [Select-1] |", marketStore.getRui());
+                Console.WriteLine("|    For Katla Fish({0})      [Select-2] |", marketStore.getKatla());
+                Console.WriteLine("|    For Ilish Fish({0})      [Select-3] |", marketStore.getIlish());
                 Console.WriteLine("|                Quit         [Select-0] |");
                 Console.WriteLine(" ----------------------------------------");
 

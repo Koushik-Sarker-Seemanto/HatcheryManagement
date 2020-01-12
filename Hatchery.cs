@@ -5,13 +5,14 @@ namespace HatcheryManagement
     class Hatchery
     {
         FishRepo fishRepo = FishRepo.GetInstance();
+        MarketStore marketStore = MarketStore.GetInstance();
         public void OnRuiBuy(Object source, SaleAmmountArgs e)
         {
-            if ((fishRepo.rui - e.ammount) >= 0)
+            if ((fishRepo.getRui() - e.ammount) >= 0)
             {
-                fishRepo.rui = fishRepo.rui - e.ammount;
-                MarketInventory.rui = MarketInventory.rui + e.ammount;
-                Console.WriteLine("Rui in Hatchery: " + fishRepo.rui);
+                fishRepo.setRui(fishRepo.getRui() - e.ammount);
+                marketStore.setRui(marketStore.getRui() + e.ammount);
+                Console.WriteLine("Rui in Hatchery: " + fishRepo.getRui());
             }
             else
             {
@@ -22,11 +23,11 @@ namespace HatcheryManagement
 
         public void OnKatlaBuy(Object source, SaleAmmountArgs e)
         {
-            if ((fishRepo.katla - e.ammount) >= 0)
+            if ((fishRepo.getKatla() - e.ammount) >= 0)
             {
-                fishRepo.katla = fishRepo.katla - e.ammount;
-                MarketInventory.katla = MarketInventory.katla + e.ammount;
-                Console.WriteLine("Katla in Hatchery: " + fishRepo.katla);
+                fishRepo.setKatla(fishRepo.getKatla() - e.ammount);
+                marketStore.setKatla(marketStore.getKatla() + e.ammount);
+                Console.WriteLine("Katla in Hatchery: " + fishRepo.getKatla());
             }
             else
             {
@@ -37,11 +38,11 @@ namespace HatcheryManagement
 
         public void OnIlishBuy(Object source, SaleAmmountArgs e)
         {
-            if ((fishRepo.ilish - e.ammount) >= 0)
+            if ((fishRepo.getIlish() - e.ammount) >= 0)
             {
-                fishRepo.ilish = fishRepo.ilish - e.ammount;
-                MarketInventory.ilish = MarketInventory.ilish + e.ammount;
-                Console.WriteLine("Katla in Hatchery: " + fishRepo.ilish);
+                fishRepo.setIlish(fishRepo.getIlish() - e.ammount);
+                marketStore.setIlish(marketStore.getIlish() + e.ammount);
+                Console.WriteLine("Ilish in Hatchery: " + fishRepo.getIlish());
             }
             else
             {

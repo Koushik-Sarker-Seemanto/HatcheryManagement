@@ -3,12 +3,13 @@ namespace HatcheryManagement
 {
     class MarketInventory
     {
-        public static int rui = 100, katla = 100, ilish = 100;
+        // public static int rui = 100, katla = 100, ilish = 100;
+        MarketStore marketStore = MarketStore.GetInstance();
         public void OnRuiSale(Object source, SaleAmmountArgs e)
         {
-            if ((rui - e.ammount) >= 0)
+            if ((marketStore.getRui() - e.ammount) >= 0)
             {
-                rui = rui - e.ammount;
+                marketStore.setRui(marketStore.getRui() - e.ammount);
                 System.Console.WriteLine("{0} rui fish SOLD.", e.ammount);
             }
             else
@@ -18,9 +19,9 @@ namespace HatcheryManagement
         }
         public void OnKatlaSale(Object source, SaleAmmountArgs e)
         {
-            if ((katla - e.ammount) >= 0)
+            if ((marketStore.getKatla() - e.ammount) >= 0)
             {
-                katla = katla - e.ammount;
+                marketStore.setKatla(marketStore.getKatla() - e.ammount);
                 System.Console.WriteLine("{0} katla fish SOLD.", e.ammount);
             }
             else
@@ -30,9 +31,9 @@ namespace HatcheryManagement
         }
         public void OnIlishSale(Object source, SaleAmmountArgs e)
         {
-            if ((ilish - e.ammount) >= 0)
+            if ((marketStore.getIlish() - e.ammount) >= 0)
             {
-                ilish = ilish - e.ammount;
+                marketStore.setIlish(marketStore.getIlish() - e.ammount);
                 System.Console.WriteLine("{0} ilish fish SOLD.", e.ammount);
             }
             else
