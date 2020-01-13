@@ -9,7 +9,7 @@ namespace HatcheryManagement
         {
             if ((marketStore.getRui() - e.ammount) >= 0)
             {
-                marketStore.setRui(marketStore.getRui() - e.ammount);
+                marketStore.deleteRui(e.ammount);
                 System.Console.WriteLine("{0} rui fish SOLD.", e.ammount);
             }
             else
@@ -21,7 +21,7 @@ namespace HatcheryManagement
         {
             if ((marketStore.getKatla() - e.ammount) >= 0)
             {
-                marketStore.setKatla(marketStore.getKatla() - e.ammount);
+                marketStore.deleteKatla(e.ammount);
                 System.Console.WriteLine("{0} katla fish SOLD.", e.ammount);
             }
             else
@@ -33,7 +33,7 @@ namespace HatcheryManagement
         {
             if ((marketStore.getIlish() - e.ammount) >= 0)
             {
-                marketStore.setIlish(marketStore.getIlish() - e.ammount);
+                marketStore.deleteIlish(e.ammount);
                 System.Console.WriteLine("{0} ilish fish SOLD.", e.ammount);
             }
             else

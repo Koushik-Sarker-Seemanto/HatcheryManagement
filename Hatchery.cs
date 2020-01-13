@@ -10,8 +10,10 @@ namespace HatcheryManagement
         {
             if ((fishRepo.getRui() - e.ammount) >= 0)
             {
-                fishRepo.setRui(fishRepo.getRui() - e.ammount);
-                marketStore.setRui(marketStore.getRui() + e.ammount);
+                // fishRepo.setRui(fishRepo.getRui().Count - e.ammount);
+                fishRepo.deleteRui(e.ammount);
+
+                marketStore.setRui(e.ammount);
                 Console.WriteLine("Rui in Hatchery: " + fishRepo.getRui());
             }
             else
@@ -25,8 +27,10 @@ namespace HatcheryManagement
         {
             if ((fishRepo.getKatla() - e.ammount) >= 0)
             {
-                fishRepo.setKatla(fishRepo.getKatla() - e.ammount);
-                marketStore.setKatla(marketStore.getKatla() + e.ammount);
+                // fishRepo.setKatla(fishRepo.getKatla().Count - e.ammount);
+                fishRepo.deleteKatla(e.ammount);
+
+                marketStore.setKatla(e.ammount);
                 Console.WriteLine("Katla in Hatchery: " + fishRepo.getKatla());
             }
             else
@@ -40,8 +44,9 @@ namespace HatcheryManagement
         {
             if ((fishRepo.getIlish() - e.ammount) >= 0)
             {
-                fishRepo.setIlish(fishRepo.getIlish() - e.ammount);
-                marketStore.setIlish(marketStore.getIlish() + e.ammount);
+                // fishRepo.setIlish(fishRepo.getIlish().Count - e.ammount);
+                fishRepo.deleteIlish(e.ammount);
+                marketStore.setIlish(e.ammount);
                 Console.WriteLine("Ilish in Hatchery: " + fishRepo.getIlish());
             }
             else

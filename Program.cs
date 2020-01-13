@@ -47,13 +47,18 @@ namespace HatcheryManagement
                     Console.WriteLine("Invalid Input!!!");
                 }
             }
+            Console.WriteLine("this is Executing.");
+            FishRepo fr = FishRepo.GetInstance();
+            // fr.PrintRui();
+            MarketStore ms = MarketStore.GetInstance();
+            ms.PrintRuiMarket();
         }
         public static void CheckFish()
         {
             while (true)
             {
                 Thread.Sleep(2000);
-                System.Console.WriteLine("CheckFish");
+                // System.Console.WriteLine("CheckFish");
                 FishTank.GenerateFish();
             }
         }
