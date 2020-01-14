@@ -5,7 +5,7 @@ namespace HatcheryManagement
     class Hatchery
     {
         FishRepo fishRepo = FishRepo.GetInstance();
-        MarketStore marketStore = MarketStore.GetInstance();
+        MarketStore marketStore = new MarketStore();
         public void OnRuiBuy(Object source, SaleAmmountArgs e)
         {
             if ((fishRepo.getRui() - e.ammount) >= 0)

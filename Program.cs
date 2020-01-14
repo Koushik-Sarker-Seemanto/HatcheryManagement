@@ -50,7 +50,7 @@ namespace HatcheryManagement
             Console.WriteLine("this is Executing.");
             FishRepo fr = FishRepo.GetInstance();
             // fr.PrintRui();
-            MarketStore ms = MarketStore.GetInstance();
+            MarketStore ms = new MarketStore();
             ms.PrintRuiMarket();
         }
         public static void CheckFish()

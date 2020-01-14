@@ -11,7 +11,7 @@ namespace HatcheryManagement
                 Market market = new Market();
                 MarketInventory marketInventory = new MarketInventory();
 
-                MarketStore marketStore = MarketStore.GetInstance();
+                MarketStore marketStore = new MarketStore();
 
                 Console.WriteLine(" ----------------------------------------");
                 Console.WriteLine("|            Normal User Mode            |");

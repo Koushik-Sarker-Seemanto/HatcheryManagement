@@ -1,18 +1,16 @@
 using System;
 namespace HatcheryManagement
 {
-    class KatlaFish
+    public class KatlaFish : GenericFish
     {
-        public string KatlaName;
-        public string KatlaWeight;
         public KatlaFish()
         {
 
         }
-        public KatlaFish(string KatlaName, string KatlaWeight)
+        public KatlaFish(string Name, string Weight)
         {
-            this.KatlaName = KatlaName;
-            this.KatlaWeight = KatlaWeight;
+            this.Name = Name;
+            this.Weight = Weight;
         }
         
     }

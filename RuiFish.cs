@@ -1,18 +1,16 @@
 using System;
 namespace HatcheryManagement
 {
-    class RuiFish
+    public class RuiFish : GenericFish
     {
-        public string RuiName;
-        public string RuiWeight;
         public RuiFish()
         {
 
         }
-        public RuiFish(string RuiName, string RuiWeight)
+        public RuiFish(string Name, string Weight)
         {
-            this.RuiName = RuiName;
-            this.RuiWeight = RuiWeight;
+            this.Name = Name;
+            this.Weight = Weight;
         }
         
     }

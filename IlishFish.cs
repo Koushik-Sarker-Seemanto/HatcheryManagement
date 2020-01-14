@@ -1,18 +1,16 @@
 using System;
 namespace HatcheryManagement
 {
-    class IlishFish
+    public class IlishFish : GenericFish
     {
-        public string IlishName;
-        public string IlishWeight;
         public IlishFish()
         {
 
         }
-        public IlishFish(string IlishName, string IlishWeight)
+        public IlishFish(string Name, string Weight)
         {
-            this.IlishName = IlishName;
-            this.IlishWeight = IlishWeight;
+            this.Name = Name;
+            this.Weight = Weight;
         }
         
     }

@@ -4,7 +4,7 @@ namespace HatcheryManagement
     class MarketInventory
     {
         // public static int rui = 100, katla = 100, ilish = 100;
-        MarketStore marketStore = MarketStore.GetInstance();
+        MarketStore marketStore = new MarketStore();
         public void OnRuiSale(Object source, SaleAmmountArgs e)
         {
             if ((marketStore.getRui() - e.ammount) >= 0)

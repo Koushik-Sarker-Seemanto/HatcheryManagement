@@ -9,7 +9,7 @@ namespace HatcheryManagement
             while(true)
             {
                 FishRepo fishRepo = FishRepo.GetInstance();
-                MarketStore marketStore = MarketStore.GetInstance();
+                MarketStore marketStore = new MarketStore();
 
                 Market market = new Market();
                 Hatchery hatchery = new Hatchery();
