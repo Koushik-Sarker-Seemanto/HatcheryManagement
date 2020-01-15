@@ -11,6 +11,12 @@ namespace HatcheryManagement
         public List<KatlaFish> katlaListMarket = new List<KatlaFish>();
         public List<IlishFish> ilishListMarket = new List<IlishFish>();
 
+
+
+        public List<GenericFish> marketList = new List<GenericFish>();
+        
+
+
         private static DbMarket instance;
         private static readonly object lockCheck = new object();
 

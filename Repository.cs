@@ -1,68 +1,91 @@
-// using System;
-// using System.Linq.Expressions;
-// using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
-// namespace HatcheryManagement
-// {
-//     public class Repository<T> : IRepository<T>, IDisposable
-//     {
-//         private T context;
+namespace HatcheryManagement
+{
+    public class Repository : IRepository
+    {
+        DbMarket dbMarket;
+        // public List<GenericFish> marketList = new List<GenericFish>();
+        public Repository()
+        {
+            dbMarket = DbMarket.GetInstance();
+        }
+        public List<T> GetAll<T>() where T : GenericFish
+        {
+            List<T> tList = null;
+            if (typeof(RuiFish).Equals(typeof(T)))
+            {
+                tList = dbMarket.ruiListMarket.Cast<T>().ToList();
+                return tList;
+            }
+            else if(typeof(KatlaFish).Equals(typeof(T)))
+            {
+                tList = dbMarket.katlaListMarket.Cast<T>().ToList();
+                return tList;
+            }
+            else if (typeof(IlishFish).Equals(typeof(T)))
+            {
+                tList = dbMarket.ilishListMarket.Cast<T>().ToList();
+                return tList;
+            }
+            else
+            {
+                return tList;
+            }
+        }
+        // public T GetByID<T>(int id) where T : GenericFish
+        // {
+        //     return dbMarket.marketList[id];
+        // }
+        public void Insert<T>(T obj)
+        {
+            if (typeof(RuiFish).Equals(typeof(T)))
+            {
+                dbMarket.ruiListMarket.Add(obj);
+            }
+            else if (typeof(KatlaFish).Equals(typeof(T)))
+            {
+                KatlaFish kf = new KatlaFish();
+                kf.Name = obj.Name;
+                kf.Weight = obj.Weight;
+                dbMarket.katlaListMarket.Add(kf);
+            }
+            else if (typeof(IlishFish).Equals(typeof(T)))
+            {
+                IlishFish ilishf = new IlishFish();
+                ilishf.Name = obj.Name;
+                ilishf.Weight = obj.Weight;
+                dbMarket.ilishListMarket.Add(ilishf);
+            }
 
-//         public Repository(T context)
-//         {
-//             this.context = context;
-//         }
-
-//         public List<T> GetAll()
-//         {
-//             return context.;
-//         }
-
-//         public T GetByID(int id)
-//         {
-//             return context.FishList.Find(id);
-//         }
-
-//         public void Insert(T fish)
-//         {
-//             context.FishList.Add(fish);
-//         }
-
-//         public void Delete(int id)
-//         {
-//             T fish = context.FishList.Find(id);
-//             context.FishList.Remove(fish);
-//         }
-
-//         public void Update(T fish)
-//         {
-//             context.Entry(fish).State = EntityState.Modified;
-//         }
-
-//         public void Save()
-//         {
-//             context.SaveChanges();
-//         }
-
-
-//         private bool disposed = false;
-//         protected virtual void Dispose(bool disposing)
-//         {
-//             if (!this.disposed)
-//             {
-//                 if (disposing)
-//                 {
-//                     context.Dispose();
-//                 }
-//             }
-//             this.disposed = true;
-//         }
-
-//         public void Dispose()
-//         {
-//             Dispose(true);
-//             GC.SuppressFinalize(this);
-//         }
-
-//     }
-// }
+        }
+        public void Delete<T>(int idx)
+        {
+            // dbMarket.marketList.RemoveAt(idx);
+            if (typeof(RuiFish).Equals(typeof(T)))
+            {
+                dbMarket.ruiListMarket.RemoveAt(idx);
+            }
+            else if (typeof(KatlaFish).Equals(typeof(T)))
+            {
+                dbMarket.katlaListMarket.RemoveAt(idx);
+            }
+            else if (typeof(IlishFish).Equals(typeof(T)))
+            {
+                dbMarket.ilishListMarket.RemoveAt(idx);
+            }
+        }
+        public void Update<T>(T obj, int idx) where T : GenericFish
+        {
+            if (typeof(RuiFish).Equals(typeof(T)))
+            {
+                RuiFish rf = new RuiFish();
+                rf.Name = obj.Name;
+                rf.Weight = obj.Weight;
+                dbMarket.ruiListMarket[idx] = rf;
+            }
+        }
+    }
+}

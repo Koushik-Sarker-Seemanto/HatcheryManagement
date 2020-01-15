@@ -6,11 +6,12 @@ namespace HatcheryManagement
     class MarketStore
     {
         DbMarket dbMarket = DbMarket.GetInstance();
-        RuiRepository ruiRepository = new RuiRepository();
-        KatlaRepository katlaRepository = new KatlaRepository();
+        Repository repository = new Repository();
+        // RuiRepository ruiRepository = new RuiRepository();
+        // KatlaRepository katlaRepository = new KatlaRepository();
         public int getRui()
         {
-            return ruiRepository.GetAll().Count;
+            return repository.GetAll<RuiFish>().Count;
         }
         public void setRui(int value)
         {
@@ -21,7 +22,8 @@ namespace HatcheryManagement
                 string weight = "rui" + Convert.ToString((i % 3));
                 RuiFish rui = new RuiFish(name, weight);
                 // dbMarket.ruiListMarket.Add(rui);
-                ruiRepository.Insert(rui);
+                // ruiRepository.Insert(rui);
+                repository.Insert<RuiFish>(rui);
             }
         }
         public void deleteRui(int value)
@@ -30,13 +32,15 @@ namespace HatcheryManagement
             for (int i = numofRui-1; i >= (numofRui - value); i--)
             {
                 // dbMarket.ruiListMarket.RemoveAt(i);
-                ruiRepository.Delete(i);
+                // ruiRepository.Delete(i);
+                repository.Delete<RuiFish>(i);
             }
         }
 
         public int getKatla()
         {
-            return katlaRepository.GetAll().Count;
+            // return katlaRepository.GetAll().Count;
+            return repository.GetAll<KatlaFish>().Count;
         }
         public void setKatla(int value)
         {
@@ -47,7 +51,8 @@ namespace HatcheryManagement
                 string weight = "katla" + Convert.ToString((i % 3));
                 KatlaFish katla = new KatlaFish(name, weight);
                 // dbMarket.katlaListMarket.Add(katla);
-                katlaRepository.Insert(katla);
+                // katlaRepository.Insert(katla);
+                repository.Insert<KatlaFish>(katla);
             }
         }
         public void deleteKatla(int value)
@@ -56,7 +61,8 @@ namespace HatcheryManagement
             for (int i = numofKatla - 1; i >= (numofKatla - value); i--)
             {
                 // dbMarket.katlaListMarket.RemoveAt(i);
-                katlaRepository.Delete(i);
+                // katlaRepository.Delete(i);
+                repository.Delete<KatlaFish>(i);
             }
         }
 
