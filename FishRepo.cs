@@ -7,6 +7,7 @@ namespace HatcheryManagement
     {   
         DbHatchery dbHatchery;
         private static int count = 0;
+        HatcheryRepository hatcheryRepository = new HatcheryRepository();
         private FishRepo()
         {
             dbHatchery = DbHatchery.GetInstance();
@@ -34,7 +35,8 @@ namespace HatcheryManagement
         }
         public int getRui()
         {
-            return dbHatchery.ruiList.Count;
+            // return dbHatchery.ruiList.Count;
+            return hatcheryRepository.GetAll<RuiFish>().Count;
         }
         public void setRui(int value)
         {
@@ -44,7 +46,8 @@ namespace HatcheryManagement
                 string name = "rui" + Convert.ToString(i);
                 string weight = "rui" + Convert.ToString((i % 3));
                 RuiFish rui = new RuiFish(name, weight);
-                dbHatchery.ruiList.Add(rui);
+                // dbHatchery.ruiList.Add(rui);
+                hatcheryRepository.Insert<RuiFish>(rui);
             }
         }
         public void deleteRui(int value)
@@ -52,7 +55,8 @@ namespace HatcheryManagement
             int numofRui = dbHatchery.ruiList.Count;
             for (int i = numofRui - 1; i >= (numofRui - value); i--)
             {
-                dbHatchery.ruiList.RemoveAt(i);
+                // dbHatchery.ruiList.RemoveAt(i);
+                hatcheryRepository.Delete<RuiFish>(i);
             }
         }
         public void deleteKatla(int value)
@@ -60,7 +64,8 @@ namespace HatcheryManagement
             int numofKatla = dbHatchery.katlaList.Count;
             for (int i = numofKatla - 1; i >= (numofKatla - value); i--)
             {
-                dbHatchery.katlaList.RemoveAt(i);
+                // dbHatchery.katlaList.RemoveAt(i);
+                hatcheryRepository.Delete<KatlaFish>(i);
             }
         }
         public void deleteIlish(int value)
@@ -68,12 +73,14 @@ namespace HatcheryManagement
             int numofIlish = dbHatchery.ilishList.Count;
             for (int i = numofIlish - 1; i >= (numofIlish - value); i--)
             {
-                dbHatchery.ilishList.RemoveAt(i);
+                // dbHatchery.ilishList.RemoveAt(i);
+                hatcheryRepository.Delete<IlishFish>(i);
             }
         }
         public int getKatla()
         {
-            return dbHatchery.katlaList.Count;
+            // return dbHatchery.katlaList.Count;
+            return hatcheryRepository.GetAll<KatlaFish>().Count;
         }
         public void setKatla(int value)
         {
@@ -83,13 +90,15 @@ namespace HatcheryManagement
                 string name = "katla" + Convert.ToString(i);
                 string weight = "katla" + Convert.ToString((i % 3));
                 KatlaFish katla = new KatlaFish(name, weight);
-                dbHatchery.katlaList.Add(katla);
+                // dbHatchery.katlaList.Add(katla);
+                hatcheryRepository.Insert<KatlaFish>(katla);
             }
         }
 
         public int getIlish()
         {
-            return dbHatchery.ilishList.Count;
+            // return dbHatchery.ilishList.Count;
+            return hatcheryRepository.GetAll<IlishFish>().Count;
         }
         public void setIlish(int value)
         {
@@ -99,7 +108,8 @@ namespace HatcheryManagement
                 string name = "ilish" + Convert.ToString(i);
                 string weight = "ilish" + Convert.ToString((i % 3));
                 IlishFish ilish = new IlishFish(name, weight);
-                dbHatchery.ilishList.Add(ilish);
+                // dbHatchery.ilishList.Add(ilish);
+                hatcheryRepository.Insert<IlishFish>(ilish);
             }
         }
         public void PrintRui()

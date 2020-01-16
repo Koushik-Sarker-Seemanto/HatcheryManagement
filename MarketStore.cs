@@ -7,8 +7,6 @@ namespace HatcheryManagement
     {
         DbMarket dbMarket = DbMarket.GetInstance();
         Repository repository = new Repository();
-        // RuiRepository ruiRepository = new RuiRepository();
-        // KatlaRepository katlaRepository = new KatlaRepository();
         public int getRui()
         {
             return repository.GetAll<RuiFish>().Count;
@@ -68,7 +66,7 @@ namespace HatcheryManagement
 
         public int getIlish()
         {
-            return dbMarket.ilishListMarket.Count;
+            return repository.GetAll<IlishFish>().Count;
         }
         public void setIlish(int value)
         {
@@ -78,7 +76,8 @@ namespace HatcheryManagement
                 string name = "ilish" + Convert.ToString(i);
                 string weight = "ilish" + Convert.ToString((i % 3));
                 IlishFish ilish = new IlishFish(name, weight);
-                dbMarket.ilishListMarket.Add(ilish);
+                // dbMarket.ilishListMarket.Add(ilish);
+                repository.Insert<IlishFish>(ilish);
             }
         }
         public void deleteIlish(int value)
@@ -86,7 +85,8 @@ namespace HatcheryManagement
             int numofIlish = dbMarket.ilishListMarket.Count;
             for (int i = numofIlish - 1; i >= (numofIlish - value); i--)
             {
-                dbMarket.ilishListMarket.RemoveAt(i);
+                // dbMarket.ilishListMarket.RemoveAt(i);
+                repository.Delete<IlishFish>(i);
             }
         }
 

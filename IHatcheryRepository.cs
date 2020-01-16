@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HatcheryManagement
 {
-    public interface IRepository
+    public interface IHatcheryRepository
     {
         T GetByID<T>(int id) where T: GenericFish,new();
         List<T> GetAll<T>() where T : GenericFish;
